@@ -4,23 +4,26 @@
 		<title>To do list</title>
 
 		<script src="./js/shared/angular.min.js"></script>
+		<!-- <script src="http://documentcloud.github.io/underscore/underscore-min.js"></script>	 -->
 
-		<link rel="stylesheet" href="bootstrap.css" />
-		<link rel="stylesheet" href="todo.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/todolist.css" />
 	</head>
 	<body ng-app="todoApp">
 		<div ng-controller="TodoCtrl">
 			<h2>Todo lists</h2>
-			<div>{{ HelloWorld }}</div>
-			<ul>
+			<!-- <div>{{ HelloWorld }}</div> -->
+			<ul class="list-unstyled">
 				<li ng-repeat="todolist in todolists">
-					<span class="done-{{todo.done}}">{{ todolist.text }}</span>
+					<input type="checkbox" ng-model="todolist.done"></input>
+					<span class="done-{{todolist.done}}">{{ todolist.text }}</span>
 				</li>
 			</ul>
 			<form class="form-horizontal">
 				<input type="text" ng-model="formTodoText">
-				<button class="btn" ng-click="addTodoList()"><i class="icon=plus"></i>Add list</button>
+				<button class="btn" ng-click="addTodoList()"><i class="icon-plus"></i>Add list</button>
 			</form>
+			<button class="btn" ng-click="removeCompleted()">Clear completed</button>
 		</div>
 
 		<!-- Modules -->
